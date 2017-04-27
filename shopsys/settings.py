@@ -1,3 +1,4 @@
+#!_*_coding:utf-8_*_
 """
 Django settings for shopsys project.
 
@@ -14,7 +15,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SETTINGS_DIR = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'shopsys.apps.catalog',#默认的只识别到第一层的shopsys
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'shopsys.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [SETTINGS_DIR,'templates'],#默认的空列表，就会在shoosys目录下找，而现在是在shopsys/shopsys下面找
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
